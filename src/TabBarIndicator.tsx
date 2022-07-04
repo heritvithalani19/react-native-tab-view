@@ -9,7 +9,6 @@ import {
   Platform,
 } from 'react-native';
 
-import { Colors } from '../../../src/CommonConfig';
 import type { Route, SceneRendererProps, NavigationState } from './types';
 
 export type GetTabWidth = (index: number) => number;
@@ -137,7 +136,7 @@ export default class TabBarIndicator<T extends Route> extends React.Component<
 
 const styles = StyleSheet.create({
   indicator: {
-    backgroundColor: Colors.PRIMARY,
+    backgroundColor: 'rgb(70,81,222)',
     position: 'absolute',
     left: 0,
     bottom: 0,

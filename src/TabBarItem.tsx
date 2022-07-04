@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import PlatformPressable from './PlatformPressable';
 import type { Scene, Route, NavigationState } from './types';
-import { Colors, Fonts } from '../../../src/CommonConfig';
 
 export type Props<T extends Route> = {
   position: Animated.AnimatedInterpolation;
@@ -42,7 +41,7 @@ export type Props<T extends Route> = {
   style: StyleProp<ViewStyle>;
 };
 
-const DEFAULT_ACTIVE_COLOR = Colors.BLACK;
+const DEFAULT_ACTIVE_COLOR = 'rgb(0,0,0)';
 const DEFAULT_INACTIVE_COLOR = 'rgb(148,148,148)';
 
 export default class TabBarItem<T extends Route> extends React.Component<
@@ -264,7 +263,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     // textTransform: 'uppercase',
     fontSize: 16,
-    fontFmaily: Fonts.Bold
+    fontFmaily: 'Raleway-Bold'
   },
   icon: {
     margin: 2,
