@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import PlatformPressable from './PlatformPressable';
 import type { Scene, Route, NavigationState } from './types';
+import { Colors, Fonts } from '../../../src/CommonConfig';
 
 export type Props<T extends Route> = {
   position: Animated.AnimatedInterpolation;
@@ -41,8 +42,8 @@ export type Props<T extends Route> = {
   style: StyleProp<ViewStyle>;
 };
 
-const DEFAULT_ACTIVE_COLOR = 'rgba(255, 255, 255, 1)';
-const DEFAULT_INACTIVE_COLOR = 'rgba(255, 255, 255, 0.7)';
+const DEFAULT_ACTIVE_COLOR = Colors.BLACK;
+const DEFAULT_INACTIVE_COLOR = 'rgb(148,148,148)';
 
 export default class TabBarItem<T extends Route> extends React.Component<
   Props<T>
@@ -113,14 +114,14 @@ export default class TabBarItem<T extends Route> extends React.Component<
       activeColorCustom !== undefined
         ? activeColorCustom
         : typeof labelColorFromStyle === 'string'
-        ? labelColorFromStyle
-        : DEFAULT_ACTIVE_COLOR;
+          ? labelColorFromStyle
+          : DEFAULT_ACTIVE_COLOR;
     const inactiveColor =
       inactiveColorCustom !== undefined
         ? inactiveColorCustom
         : typeof labelColorFromStyle === 'string'
-        ? labelColorFromStyle
-        : DEFAULT_INACTIVE_COLOR;
+          ? labelColorFromStyle
+          : DEFAULT_INACTIVE_COLOR;
 
     const activeOpacity = this.getActiveOpacity(
       position,
@@ -168,25 +169,25 @@ export default class TabBarItem<T extends Route> extends React.Component<
       renderLabelCustom !== undefined
         ? renderLabelCustom
         : ({ route, color }: { route: T; color: string }) => {
-            const labelText = getLabelText({ route });
+          const labelText = getLabelText({ route });
 
-            if (typeof labelText === 'string') {
-              return (
-                <Animated.Text
-                  style={[
-                    styles.label,
-                    icon ? { marginTop: 0 } : null,
-                    labelStyle,
-                    { color },
-                  ]}
-                >
-                  {labelText}
-                </Animated.Text>
-              );
-            }
+          if (typeof labelText === 'string') {
+            return (
+              <Animated.Text
+                style={[
+                  styles.label,
+                  icon ? { marginTop: 0 } : null,
+                  labelStyle,
+                  { color },
+                ]}
+              >
+                {labelText}
+              </Animated.Text>
+            );
+          }
 
-            return labelText;
-          };
+          return labelText;
+        };
 
     if (renderLabel) {
       const activeLabel = renderLabel({
@@ -261,7 +262,9 @@ const styles = StyleSheet.create({
   label: {
     margin: 4,
     backgroundColor: 'transparent',
-    textTransform: 'uppercase',
+    // textTransform: 'uppercase',
+    fontSize: 16,
+    fontFmaily: Fonts.Bold
   },
   icon: {
     margin: 2,

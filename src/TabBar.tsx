@@ -78,8 +78,8 @@ export default class TabBar<T extends Route> extends React.Component<
       typeof route.accessibilityLabel === 'string'
         ? route.accessibilityLabel
         : typeof route.title === 'string'
-        ? route.title
-        : undefined,
+          ? route.title
+          : undefined,
     getTestID: ({ route }: Scene<Route>) => route.testID,
     renderIndicator: (props: IndicatorProps<Route>) => (
       <TabBarIndicator {...props} />
@@ -97,7 +97,7 @@ export default class TabBar<T extends Route> extends React.Component<
 
     if (
       prevProps.navigationState.routes.length !==
-        navigationState.routes.length ||
+      navigationState.routes.length ||
       prevProps.navigationState.index !== navigationState.index ||
       prevState.layout.width !== layout.width ||
       prevState.tabWidths !== tabWidths
@@ -324,8 +324,8 @@ export default class TabBar<T extends Route> extends React.Component<
             tabBarWidth
               ? { width: tabBarWidth }
               : scrollEnabled
-              ? { width: tabBarWidthPercent }
-              : null,
+                ? { width: tabBarWidthPercent }
+                : null,
             indicatorContainerStyle,
           ]}
         >
@@ -398,22 +398,22 @@ export default class TabBar<T extends Route> extends React.Component<
                 pressOpacity: pressOpacity,
                 onLayout: isWidthDynamic
                   ? (e) => {
-                      this.measuredTabWidths[route.key] =
-                        e.nativeEvent.layout.width;
+                    this.measuredTabWidths[route.key] =
+                      e.nativeEvent.layout.width;
 
-                      // When we have measured widths for all of the tabs, we should updates the state
-                      // We avoid doing separate setState for each layout since it triggers multiple renders and slows down app
-                      if (
-                        routes.every(
-                          (r) =>
-                            typeof this.measuredTabWidths[r.key] === 'number'
-                        )
-                      ) {
-                        this.setState({
-                          tabWidths: { ...this.measuredTabWidths },
-                        });
-                      }
+                    // When we have measured widths for all of the tabs, we should updates the state
+                    // We avoid doing separate setState for each layout since it triggers multiple renders and slows down app
+                    if (
+                      routes.every(
+                        (r) =>
+                          typeof this.measuredTabWidths[r.key] === 'number'
+                      )
+                    ) {
+                      this.setState({
+                        tabWidths: { ...this.measuredTabWidths },
+                      });
                     }
+                  }
                   : undefined,
                 onPress: () => {
                   const event: Scene<T> & Event = {
@@ -458,7 +458,7 @@ const styles = StyleSheet.create({
     overflow: Platform.select({ default: 'scroll', web: undefined }),
   },
   tabBar: {
-    backgroundColor: '#2196f3',
+    backgroundColor: 'white',
     elevation: 4,
     shadowColor: 'black',
     shadowOpacity: 0.1,

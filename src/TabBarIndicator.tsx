@@ -9,6 +9,7 @@ import {
   Platform,
 } from 'react-native';
 
+import { Colors } from '../../../src/CommonConfig';
 import type { Route, SceneRendererProps, NavigationState } from './types';
 
 export type GetTabWidth = (index: number) => number;
@@ -103,10 +104,10 @@ export default class TabBarIndicator<T extends Route> extends React.Component<
           scaleX:
             routes.length > 1
               ? position.interpolate({
-                  inputRange,
-                  outputRange,
-                  extrapolate: 'clamp',
-                })
+                inputRange,
+                outputRange,
+                extrapolate: 'clamp',
+              })
               : outputRange[0],
         },
         { translateX: 0.5 }
@@ -136,7 +137,7 @@ export default class TabBarIndicator<T extends Route> extends React.Component<
 
 const styles = StyleSheet.create({
   indicator: {
-    backgroundColor: '#ffeb3b',
+    backgroundColor: Colors.PRIMARY,
     position: 'absolute',
     left: 0,
     bottom: 0,
